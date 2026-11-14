@@ -99,3 +99,83 @@ restartQuestions = False
 userWantsScheduleBuilder = False
 userWantsToSwap = False
 userWantsToReconsider = False
+
+# global check if choices matches allowed option
+def is_valid(user_input, valid_options):
+    for option in valid_options:
+        if user_input.upper() == option.upper():
+            return True
+    return False
+
+# display welcome message
+print("Welcome to the NJIT CS/DS Course Advisor!")
+# ask for name
+name = input("Enter your name: ")
+
+# ask for student type (dorman/dean/normal)
+scholar = input("Are you a Dorman Scholar, Dean Scholar, or Neither? ")
+while is_valid(scholar, ["Dorman", "Dean", "Neither"]) == False:
+    scholar = input("Invalid input. Enter Dorman, Dean, or Neither: ")
+
+is_scholar = False
+if scholar.lower() == "dorman":
+    is_scholar = True
+    track = input("Enter your Dorman track: ")
+elif scholar.lower() == "dean":
+    is_scholar = True
+
+# ask about major (only t2o right now)
+major = input("Enter your major (CS or DS): ").upper()
+while is_valid(major, ["CS", "DS"]) == False:
+    major = input("Invalid major. Enter CS or DS: ").upper()
+
+# ask about completed courses
+completed = []
+num_completed = int(input("How many courses have you completed? "))
+
+# honors courses specifically
+if is_scholar == True and num_completed > 0:
+    honors_taken = int(input("How many honors courses have you taken? "))
+
+# add the completed courses in
+for i in range(num_completed):
+    course_code = input("Enter completed course code: ").upper()
+    completed.append(course_code)
+
+# Choose a niche you like twin
+interest = input("Choose an interest (AI, Web, or None): ")
+while is_valid(interest, ["AI", "Web", "None"]) == False:
+    interest = input("Invalid interest. Choose AI, Web, or None: ")
+
+# ask for max credits and warn if they're part time or over credits
+# no stops ts
+keep_asking = True
+while keep_asking == True:
+    max_credits = int(input("Max credits you want to take next semester: "))
+    # part time
+    if max_credits < 12:
+        if is_scholar == True:
+            ans = input("You will lose Scholar eligibility under 12 credits. Reconsider? (yes/no): ")
+        else:
+            ans = input("You will be part-time under 12 credits. Reconsider? (yes/no): ")
+        if ans.lower() == "no":
+            keep_asking = False
+    # too many credits
+    elif max_credits > 19 or (max_credits > 17 and is_scholar == False):
+        ans = input("You will have to pay extra overload tuition. Reconsider? (yes/no): ")
+        if ans.lower() == "no":
+            keep_asking = False
+    # no warning needed
+    else:
+        keep_asking = False
+
+# store all NJIT CS and DS courses
+
+# filter courses user did
+
+# find remaining required courses and matching electives, check prereqs
+# if they'r edone they graduate
+# display these
+
+# Stretch goal and build that
+# print it out
