@@ -28,7 +28,7 @@ CS/IS/IT/DS Elective 200+,3,CS/IS/IT/DS Elective 200+,Check for Prerequisites
 CS 331,3,Database System Design & Mgmt,CS 114
 CS 350,3,Intro to Computer Systems,CS 280
 CS 351,3,Introduction to Cybersecurity,CS 241,CS 356
-YWCC 307,1,Professional Dev in Computing
+YWCC 307,1,Professional Dev in Computing,YWCC 207
 CS Elective 300+,3,CS Elective 300+,Check for Prerequisites
 Social Science GER,3,Social Science GER,Check for Prerequisites
 CS 435,3,Advanced Data Structures and Algorithm Design,CS 241,CS 288
