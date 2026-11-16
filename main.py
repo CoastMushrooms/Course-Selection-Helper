@@ -108,7 +108,7 @@ def is_valid(user_input, valid_options):
     return False
 
 # display welcome message
-print("Welcome to the NJIT CS/DS Course Advisor!")
+print("Welcome to the NJIT CS Course Advisor!")
 # ask for name
 name = input("Enter your name: ")
 
@@ -125,9 +125,9 @@ elif scholar.lower() == "dean":
     is_scholar = True
 
 # ask about major (only t2o right now)
-major = input("Enter your major (CS or DS): ").upper()
-while is_valid(major, ["CS", "DS"]) == False:
-    major = input("Invalid major. Enter CS or DS: ").upper()
+major = input("Enter your major (CS): ").upper()
+while is_valid(major, ["CS"]) == False:
+    major = input("Invalid major. Enter CS: ").upper()
 
 # ask about completed courses
 completed = []
@@ -169,7 +169,7 @@ while keep_asking == True:
     else:
         keep_asking = False
 
-# store all NJIT CS and DS courses
+# store all NJIT CS courses
 
 # filter courses user did
 
