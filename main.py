@@ -1,13 +1,12 @@
 # information about the user
-userName
 isDormanScholar = False
 isDeanScholar = False
 scholarTrack
-hasMinor = False
-numberOfMinors = 0
-minors = []
-numberOfMajors = 0
-majors = []
+# hasMinor = False
+# numberOfMinors = 0
+# minors = []
+# numberOfMajors = 0
+# majors = []
 isUndeclared = False
 
 #information about the user's courses and credits
@@ -42,11 +41,12 @@ honorsSections = []
 requiredCourses = []
 generalEducationRequirements = []
 majorRequirements = []
-minorRequirements = []
+# minorRequirements = []
 trackRequirements = []
 remainingRequirements = []
 completedRequirements = []
 
+'''
 # course information provided to user of what elective information and types they need
 allElectives = []
 electivesByCategory = []
@@ -54,13 +54,14 @@ selectedElectives = []
 electivesToRecommend = []
 electiveRequirements = []
 numberOfElectivesNeeded = 0
+'''
 
 # courses the user is recommended to take and eligible to take
 eligibleCourses = []
 recommendedCourses = []
 recommendedGenEdCourses = []
 recommendedMajorCourses = []
-recommendedMinorCourses = []
+# recommendedMinorCourses = []
 recommendedTrackCourses = []
 coursesToTake = []
 coursesWithCredit = []
@@ -89,7 +90,7 @@ isValid = False
 loopCounter = 0
 courseCounter = 0
 electiveCounter = 0
-minorCounter = 0
+# minorCounter = 0
 majorCounter = 0
 swapCounter = 0
 
@@ -124,7 +125,7 @@ if scholar.lower() == "dorman":
 elif scholar.lower() == "dean":
     is_scholar = True
 
-# ask about major (only t2o right now)
+# ask about major
 major = input("Enter your major (CS): ").upper()
 while is_valid(major, ["CS"]) == False:
     major = input("Invalid major. Enter CS: ").upper()
@@ -142,10 +143,12 @@ for i in range(num_completed):
     course_code = input("Enter completed course code: ").upper()
     completed.append(course_code)
 
+'''
 # Choose a niche you like twin
 interest = input("Choose an interest (AI, Web, or None): ")
 while is_valid(interest, ["AI", "Web", "None"]) == False:
     interest = input("Invalid interest. Choose AI, Web, or None: ")
+'''
 
 # ask for max credits and warn if they're part time or over credits
 # no stops ts
