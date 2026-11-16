@@ -154,13 +154,13 @@ if is_scholar == True and num_completed > 0:
 
 # add the completed courses in (lowkey this might not be the best i changed it i might have made it worse -sana)
 for i in range(num_completed):
-    course_code = input("Enter completed course code in the format, CS 100: ").strip().upper()
+    course_code = input("Enter completed course code in the format, CS 100. For physics, please type in the format, PHYS 111 and 111A: ").strip().strip('.')
     confirm='no'
     while confirm=='no':
         confirm=input(f'You entered course {course_code} please confirm if it is correct (yes/no): ')
         if confirm=='yes':
             continue
-        course_code = input("Reenter completed course code in the format CS 100: ").strip().upper()
+        course_code = input("Reenter completed course code in the format CS 100. For physics, please type in the format, PHYS 111 and 111A: ").strip().strip('.')
     completed.append(course_code)
 print(f'You have completed these courses: {completed}')
 
