@@ -132,14 +132,17 @@ def load_course_data():
 
         parts = line.split(",")
         # store everything from the file
-        department = parts[0]
-        course_number = parts[1]
-        credits = int(parts[2])
-        # course name gotten
-        course_name = ",".join(parts[3:])
-        course_code = department + " " + course_number
+        course_code = parts[0]
+        credits = int(parts[1])
+        course_name = parts[2]
+        prerequisitesList = []
+        i = 3
+        while (i < len(parts)):
+            prerequisitesList.append(parts[i])
+            i += 1
+        
         # store course as a list
-        course = [course_code, credits, course_name]
+        course = [course_code, credits, course_name, prerequisitesList]
         # add it
         all_courses.append(course)
 
@@ -230,19 +233,51 @@ def find_remaining_courses(all_courses, completed_courses):
 
     return remaining_courses
 
+# determine academic standing based on number of completed credits
+def determine_standing(completed_courses):
+    completedCredits = 0
+    for course in completed_courses:
+        completedCredits += course[1]
+    if completedCredits <= 28:
+        return "Freshman"
+    elif completedCredits <= 56:
+        return "Sophmore"
+    elif completedCredits <= 90:
+        return "Junior"
+    else:
+        return "Senior"
+
+#check if prerequisites for a course are completed and have correct standing
+def prerequisites_complete(checkingCourse, completed_courses):
+    prerequisitesList = checkingCourse[-1]
+    for prerequisite in prerequisitesList:
+        prerequisiteFound = False
+        for course in completed_courses:
+            if course[0] == prerequisite[0]:
+                prerequisiteFound = True
+        if not prerequisiteFound:
+            return False
+
+    if checkingCourse[0] == "YWCC 207":
+        if determine_standing(completed_courses) == "Freshman":
+            return False
+        
+    return True
+
 # recommend courses based on creds
-def recommend_courses(remaining_courses, max_credits):
+def recommend_courses(remaining_courses, max_credits, completed_courses):
     recommended_courses = []
     total_credits = 0
 
     # add them in if fits the conditions
     for course in remaining_courses:
-        course_code = course[0]
-        credits = course[1]
-        course_name = course[2]
-        if total_credits + credits <= max_credits:
-            recommended_courses.append(course)
-            total_credits += credits
+        if prerequisites_complete(course, completed_courses):
+            course_code = course[0]
+            credits = course[1]
+            course_name = course[2]
+            if total_credits + credits <= max_credits:
+                recommended_courses.append(course)
+                total_credits += credits
 
     return recommended_courses, total_credits
 
@@ -283,7 +318,7 @@ def main():
         return
 
     # recommend courses and store it
-    recommended_courses, total_credits = recommend_courses(remaining_courses, max_credits)
+    recommended_courses, total_credits = recommend_courses(remaining_courses, max_credits, completed_courses)
 
     # display everything yaya
     print("\nHello", name + "!")
