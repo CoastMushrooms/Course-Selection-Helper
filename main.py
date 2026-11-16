@@ -136,12 +136,31 @@ num_completed = int(input("How many courses have you completed? "))
 if is_scholar == True and num_completed > 0:
     honors_taken = int(input("How many honors courses have you taken? "))
 
-# add the completed courses in
+# add the completed courses in (lowkey this might not be the best i changed it i might have made it worse -sana)
 for i in range(num_completed):
-    course_code = input("Enter completed course code: ").upper()
+    while True:
+    course_code = input("Enter completed course code in format CS,100: ").strip().upper().replace(' ','')
+    if ',' in course_code:
+        break
+    print('Invalid format. Enter completed course code in format CS,100')
     completed.append(course_code)
-for course in completed: 
-    if completed 
+
+ReqCS_File=open("Required CS Major Courses.txt","r")
+ReqCS_Lines=ReqCS_File.readlines()
+ReqCS_File.close()
+reqCourses=[]
+for reqCourse in ReqCS_Lines:
+    reqCourses.append(reqCourse)
+for reqCourse in reqCourses:
+    info=reqCourse.split(',')
+    requiredCourses.append((info[0],info[1],info[2],info[3]))
+
+for compCourse in completed: 
+    for reqCourse in requiredCourses:
+        if reqCourse[0]+','+reqCourse[1]==compCourse:
+            requiredCourses.remove(reqCourse)
+            break
+print(f'Remaining required courses are: {requiredCourses}')
 
 # Choose a niche you like twin
 interest = input("Choose an interest (AI, Web, or None): ")
