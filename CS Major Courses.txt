@@ -41,5 +41,3 @@ CS Elective 300+,3,CS Elective 300+,Check for Prerequisites
 CS Elective 300+,3,CS Elective 300+,Check for Prerequisites
 CS/IS/IT/DS Elective 300+,3,CS/IS/IT/DS Elective 200+,Check for Prerequisites
 HSS 404,3,Humanities, History and Social Sciences Senior Seminar
-
-
