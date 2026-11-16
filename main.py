@@ -180,7 +180,7 @@ def get_user_info():
     return name, scholar, is_scholar, track, major
 
 # get completed courses
-def get_completed_courses(is_scholar):
+def get_completed_courses(is_scholar, all_courses):
     completed_courses = []
 
     num_completed = int(input("How many courses have you completed or have credit for? "))
@@ -192,8 +192,10 @@ def get_completed_courses(is_scholar):
 
     # loop that adds them in
     for i in range(num_completed):
-        course = input("Enter completed course code (example: CS 100): ").upper()
-        completed_courses.append(course)
+        courseName = input("Enter completed course code (example: CS 100): ").upper()
+        for course in all_courses:
+            if courseName == course[0].upper():
+                completed_courses.append(course)
 
     return completed_courses, honors_taken
 
@@ -228,7 +230,7 @@ def find_remaining_courses(all_courses, completed_courses):
     remaining_courses = []
     # checks each in list
     for course in all_courses:
-        if course[0].upper() not in completed_courses:
+        if course not in completed_courses:
             remaining_courses.append(course)
 
     return remaining_courses
@@ -250,10 +252,12 @@ def determine_standing(completed_courses):
 #check if prerequisites for a course are completed and have correct standing
 def prerequisites_complete(checkingCourse, completed_courses):
     prerequisitesList = checkingCourse[-1]
+    if prerequisitesList == ["Check for Prerequisites"]:
+        return True
     for prerequisite in prerequisitesList:
         prerequisiteFound = False
         for course in completed_courses:
-            if course[0] == prerequisite[0]:
+            if course[0].upper() == prerequisite.upper():
                 prerequisiteFound = True
         if not prerequisiteFound:
             return False
@@ -292,6 +296,8 @@ def display_courses(recommended_courses, total_credits):
         print("\nCourse:", course[0])
         print("Course Name:", course[2])
         print("Credits:", course[1])
+        if course[-1] == ["Check for Prerequisites"]:
+            print("Choose a course from the catalog and check for prerequisites")
 
     print("\nTotal Recommended Credits:", total_credits)
 
@@ -304,7 +310,8 @@ def main():
     name, scholar, is_scholar, track, major = get_user_info()
 
     # get completed courses
-    completed_courses, honors_taken = get_completed_courses(is_scholar)
+    completed_courses, honors_taken = get_completed_courses(is_scholar, all_courses)
+    print("Completed courses:", completed_courses)
 
     # get cred limit
     max_credits = get_max_credits(is_scholar)
