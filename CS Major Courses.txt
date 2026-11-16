@@ -1,0 +1,45 @@
+CS,100,3,Roadmap to Computing
+MATH,111,4,Calculus I
+ENGL,101,3,English Composition: Introduction to Academic Writing
+PHYS,111,3,Physics I
+PHYS,111A,1,Physics I Lab
+FYS,SEM,0,First-Year Student Seminar
+CS,113,3,Introduction to Computer Science I
+MATH,112,4,Calculus II
+ENGL,102,3,English Composition: Introduction to Writing for Research
+PHYS,121,3,Physics II
+PHYS,121A,1,Physics II Lab
+CS,114,3,Introduction to Computer Science II
+CS,201,1,The Artificial Neuron
+CS,275,1,Learning Algorithms
+YWCC,207,1,Computing & Effective Communication
+MATH,337,3,Linear Algebra
+CS,241,3,Foundations of Computer Science I
+CS,280,3,Programming Language Concepts
+CS,307,1,Graphs,Tensors,and AI Computing
+IS,350,3,Computers,Society and Ethics
+COM,312,3,Effective Communication
+COM,313,3,Writing in the Workplace
+MATH,333,3,Probability and Statistics
+CS,288,3,Intensive Programming in Linux
+CS,332,3,Principles of Operating Systems
+CS,341,3,Foundations of Computer Science II
+CS,356,3,Introduction to Computer Networks
+CS,331,3,Database System Design & Management
+CS,350,3,Introduction to Computer Systems
+CS,351,3,Introduction to Cybersecurity
+YWCC,307,1,Professional Development in Computing
+CS,435,3,Advanced Data Structures and Algorithm Design
+CS,490,3,Guided Design in Software Engineering
+CS,491,3,Senior Project 
+General Elective,N/A,3,N/A
+CS/IS/IT/DS,200+,3,N/A
+CS/IS/IT/DS,300+,3,N/A
+CS,300+,3,N/A
+CS,300+,3,N/A
+CS,300+,3,N/A
+CS,300+,3,N/A
+CS,300+,3,N/A
+History and Humanities GER,200+,3,N/A
+History and Humanities GER,300+,3,N/A
+Social Sciences GER,N/A,3,N/A
