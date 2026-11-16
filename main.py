@@ -71,7 +71,7 @@ numberOfCoursesToSwap = 0
 totalSelectedCredits = 0
 remainingCredits = 0
 
-# schedule builder 
+# schedule builder (might not be possible anymore)
 schedule = []
 selectedSections = []
 currentCourse = ""
@@ -125,10 +125,9 @@ elif scholar.lower() == "dean":
     is_scholar = True
 
 # ask about major (only t2o right now)
-major = input("Enter your major (CS or DS): ").upper()
-while is_valid(major, ["CS", "DS"]) == False:
-    major = input("Invalid major. Enter CS or DS: ").upper()
-
+major = input("This program is only for CS majors. Are you a CS major? yes or no"): ").lower()
+while is_valid(major, ["CS"]) == False:
+     print("Invalid major. This program is only for CS majors")
 # ask about completed courses
 completed = []
 num_completed = int(input("How many courses have you completed? "))
@@ -141,6 +140,8 @@ if is_scholar == True and num_completed > 0:
 for i in range(num_completed):
     course_code = input("Enter completed course code: ").upper()
     completed.append(course_code)
+for course in completed: 
+    if completed 
 
 # Choose a niche you like twin
 interest = input("Choose an interest (AI, Web, or None): ")
@@ -169,7 +170,7 @@ while keep_asking == True:
     else:
         keep_asking = False
 
-# store all NJIT CS and DS courses
+# store all NJIT CS courses
 
 # filter courses user did
 
