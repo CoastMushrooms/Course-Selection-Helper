@@ -1,8 +1,8 @@
 # information about the user
-userName
+userName=''
 isDormanScholar = False
 isDeanScholar = False
-scholarTrack
+scholarTrack=''
 hasMinor = False
 numberOfMinors = 0
 minors = []
@@ -20,7 +20,7 @@ numberOfCredits = 0
 
 # information about user enrollment and other student catgories
 maxCredits = 0
-enrollmentStatus
+enrollmentStatus=''
 isPartTime = False
 isFullTime = False
 reconsiderEnrollment = False
@@ -84,7 +84,7 @@ isWithinCreditLimit = True
 scheduleComplete = False
 
 # counters
-userInput
+userInput=''
 isValid = False
 loopCounter = 0
 courseCounter = 0
@@ -108,26 +108,42 @@ def is_valid(user_input, valid_options):
     return False
 
 # display welcome message
-print("Welcome to the NJIT CS/DS Course Advisor!")
+print("Welcome to the NJIT CS Course Advisor!")
 # ask for name
 name = input("Enter your name: ")
+while name=='':
+    name=input('Invalid input. Please enter your name: ')
 
 # ask for student type (dorman/dean/normal)
 scholar = input("Are you a Dorman Scholar, Dean Scholar, or Neither? ")
 while is_valid(scholar, ["Dorman", "Dean", "Neither"]) == False:
     scholar = input("Invalid input. Enter Dorman, Dean, or Neither: ")
-
+# ask for honor track if dorman student
 is_scholar = False
 if scholar.lower() == "dorman":
     is_scholar = True
-    track = input("Enter your Dorman track: ")
+    tracks=['multidisciplinary', 'global studies', 'medical humanities', 'leadership & civic engagement', 'interdisciplinary digital studies']
+    track = input("Enter your Dorman track: ").strip().lower()
+    while track not in tracks:
+        track=input('Invalid track. The options are multidisciplinary, global studies, medical humanities, leadership & civic engagement, and interdisciplinary digital studies. Enter your Dorman track: ')
+
 elif scholar.lower() == "dean":
     is_scholar = True
 
-# ask about major (only t2o right now)
-major = input("This program is only for CS majors. Are you a CS major? yes or no"): ").lower()
-while is_valid(major, ["CS"]) == False:
-     print("Invalid major. This program is only for CS majors")
+# make sure that student is a CS major
+import sys
+major = input("This program is only for CS majors. Are you a CS major? Enter yes or no: ").strip().lower()
+while is_valid(major, ['yes']) == False:
+     reevaluate=input("Invalid major. This program is only for CS majors. Would you like to reconsider? Enter yes or no: ").strip().lower()
+     if reevaluate=='yes':
+         major=input("This program is only for CS majors. Are you a CS major? Enter yes or no: ").strip().lower()
+         if is_valid(major,['yes'])==True:
+             break
+     else: 
+         print('Your major is not applicable for our program. Thank you.')
+         sys.exit()
+         break
+     
 # ask about completed courses
 completed = []
 num_completed = int(input("How many courses have you completed? "))
@@ -138,14 +154,18 @@ if is_scholar == True and num_completed > 0:
 
 # add the completed courses in (lowkey this might not be the best i changed it i might have made it worse -sana)
 for i in range(num_completed):
-    while True:
-    course_code = input("Enter completed course code in format CS,100: ").strip().upper().replace(' ','')
-    if ',' in course_code:
-        break
-    print('Invalid format. Enter completed course code in format CS,100')
+    course_code = input("Enter completed course code in the format, CS 100: ").strip().upper()
+    confirm='no'
+    while confirm=='no':
+        confirm=input(f'You entered course {course_code} please confirm if it is correct (yes/no): ')
+        if confirm=='yes':
+            continue
+        course_code = input("Reenter completed course code in the format CS 100: ").strip().upper()
     completed.append(course_code)
+print(f'You have completed these courses: {completed}')
 
-ReqCS_File=open("Required CS Major Courses.txt","r")
+# open and read file for required CS courses
+ReqCS_File=open("CS Major Courses.txt","r")
 ReqCS_Lines=ReqCS_File.readlines()
 ReqCS_File.close()
 reqCourses=[]
@@ -153,16 +173,32 @@ for reqCourse in ReqCS_Lines:
     reqCourses.append(reqCourse)
 for reqCourse in reqCourses:
     info=reqCourse.split(',')
-    requiredCourses.append((info[0],info[1],info[2],info[3]))
+    requiredCourses.append((info[0],info[1],info[2]))
 
+# remove completed courses from required CS courses list
+reqDisplayed=[]
 for compCourse in completed: 
     for reqCourse in requiredCourses:
-        if reqCourse[0]+','+reqCourse[1]==compCourse:
+        if reqCourse[0]==compCourse:
             requiredCourses.remove(reqCourse)
             break
-print(f'Remaining required courses are: {requiredCourses}')
+for reqCourse in requiredCourses:
+    reqDisplayed.append(reqCourse[0])
+print(f'Remaining required courses are: {reqDisplayed}')
 
-# Choose a niche you like twin
+#Asks which courses were honors to account for honors requirements (ABCD Groups): in progress
+'''
+if is_scholar:
+    if honors_taken==1:
+        for i in range(honors_taken):
+                honors_course=input('Enter the honors course you have taken in format, CS 100: ')
+                
+    elif honors_taken>1:
+        for i in range(honors_taken):
+            input('Enter the honors courses you have taken in format, CS 100: ')
+'''
+
+# Choose a niche you like twin (maybe no more)
 interest = input("Choose an interest (AI, Web, or None): ")
 while is_valid(interest, ["AI", "Web", "None"]) == False:
     interest = input("Invalid interest. Choose AI, Web, or None: ")
