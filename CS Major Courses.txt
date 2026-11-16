@@ -1,45 +1,43 @@
 CS,100,3,Roadmap to Computing
 MATH,111,4,Calculus I
 ENGL,101,3,English Composition: Introduction to Academic Writing
-PHYS,111,3,Physics I
-PHYS,111A,1,Physics I Lab
+PHYS,111 and 111A,4,Physics I and Lab
 FYS,SEM,0,First-Year Student Seminar
-CS,113,3,Introduction to Computer Science I
-MATH,112,4,Calculus II
-ENGL,102,3,English Composition: Introduction to Writing for Research
-PHYS,121,3,Physics II
-PHYS,121A,1,Physics II Lab
-CS,114,3,Introduction to Computer Science II
-CS,201,1,The Artificial Neuron
-CS,275,1,Learning Algorithms
-YWCC,207,1,Computing & Effective Communication
-MATH,337,3,Linear Algebra
-CS,241,3,Foundations of Computer Science I
-CS,280,3,Programming Language Concepts
-CS,307,1,Graphs,Tensors,and AI Computing
-IS,350,3,Computers,Society and Ethics
-COM,312,3,Effective Communication
-COM,313,3,Writing in the Workplace
-MATH,333,3,Probability and Statistics
-CS,288,3,Intensive Programming in Linux
-CS,332,3,Principles of Operating Systems
-CS,341,3,Foundations of Computer Science II
-CS,356,3,Introduction to Computer Networks
-CS,331,3,Database System Design & Management
-CS,350,3,Introduction to Computer Systems
-CS,351,3,Introduction to Cybersecurity
-YWCC,307,1,Professional Development in Computing
-CS,435,3,Advanced Data Structures and Algorithm Design
-CS,490,3,Guided Design in Software Engineering
-CS,491,3,Senior Project 
-General Elective,N/A,3,N/A
-CS/IS/IT/DS,200+,3,N/A
-CS/IS/IT/DS,300+,3,N/A
-CS,300+,3,N/A
-CS,300+,3,N/A
-CS,300+,3,N/A
-CS,300+,3,N/A
-CS,300+,3,N/A
-History and Humanities GER,200+,3,N/A
-History and Humanities GER,300+,3,N/A
-Social Sciences GER,N/A,3,N/A
+CS,113,3,Introduction to Computer Science I,CS 100
+MATH,112,4,Calculus II,MATH 111
+ENGL,102,3,English Composition: Introduction to Writing for Research,ENGL 101
+PHYS,121 and 121A,4,Physics II and Lab,PHYS 111 and 111A,MATH 111
+CS,114,3,Introduction to Computer Science II,CS 113
+CS,201,1,The Artificial Neuron,MATH 111,CS 100
+CS,275,1,Learning Algorithms,MATH 111,CS 100
+YWCC,207,1,Computing & Effective Com
+MATH,337,3,Linear Algebra,MATH 112
+History and Humanities GER 200+ level,,3,History and Humanities GER 200+ level,Check for Prerequisites
+General Elective,,3,General Elective,Check for Prerequisites
+CS,241,3,Foundations of Computer Science I,CS 114,MATH 112
+CS,280,3,Programming Language Concepts,CS 114
+CS,307,1,"Graphs, Tensors, and AI Computing",CS 100,MATH 337
+IS,350,3,Computers Society and Ethics,CS 100,ENGL 101,History and Humanities GER 200+ level
+COM,312 or COM 313,3,Effective Communication or Writing in the Workplace,ENGL 102,History and Humanities GER 200+ level
+MATH,333,3,Probability and Statistics,MATH 112
+CS,288,3,Intensive Programming in Linux,CS 100,CS 280
+CS,332,3,Principles of Operating Systems,CS 114
+CS,341,3,Foundations of Computer Science II,CS 241,CS 280
+CS,356,3,Introduction to Computer Networks,CS 280
+CS/IS/IT/DS,200+,3,CS/IS/IT/DS Elective 200+,Check for Prerequisites
+CS,331,3,Database System Design & Mgmt,CS 114
+CS,350,3,Intro to Computer Systems,CS 280
+CS,351,3,Introduction to Cybersecurity,CS 241,CS 356
+YWCC,307,1,Professional Dev in Computing
+CS,300+,3,CS Elective 300+,Check for Prerequisites
+Social Science GER,,3,Social Science GER,Check for Prerequisites
+CS,435,3,Advanced Data Structures and Algorithm Design,CS 241,CS 288
+CS,490,3,Guided Design in Software Engineering,CS 280,CS 288
+CS,300+,3,CS Elective 300+,Check for Prerequisites
+CS,300+,3,CS Elective 300+,Check for Prerequisites
+History and Humanities GER 300+ level,,3,History and Humanities GER 300+ level,Check for Prerequisites
+CS,491,3,Senior Project,CS 490
+CS,300+,3,CS Elective 300+,Check for Prerequisites
+CS,300+,3,CS Elective 300+,Check for Prerequisites
+CS/IS/IT/DS,300+,3,CS/IS/IT/DS Elective 200+,Check for Prerequisites
+HSS,404,3,Humanities, History and Social Sciences Senior Seminar
