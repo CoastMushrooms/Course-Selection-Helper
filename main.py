@@ -154,8 +154,10 @@ def get_user_info():
     print("Welcome to the NJIT CS Course Advisor!")
     # info in
     name = input("Enter your name: ")
-    scholar = input("Are you a Dorman Scholar, Dean Scholar, or Neither? ")
+    while name=='':
+        name=input('Invalid input. Please enter your name: ')
     
+    scholar = input("Are you a Dorman Scholar, Dean Scholar, or Neither? ")
     # forces a decision 
     while not is_valid(scholar, ["Dorman", "Dean", "Neither"]):
         scholar = input("Invalid input. Enter Dorman, Dean, or Neither: ")
@@ -166,15 +168,29 @@ def get_user_info():
     # scholar trigger for special condition
     if scholar.lower() == "dorman":
         is_scholar = True
-        track = input("Enter your Dorman track: ")
+        tracks=['multidisciplinary', 'global studies', 'medical humanities', 'leadership & civic engagement', 'interdisciplinary digital studies']
+        track = input("Enter your Dorman track: ").strip().lower()
+        while track not in tracks:
+            track=input('Invalid track. The options are multidisciplinary, global studies, medical humanities, leadership & civic engagement, and interdisciplinary digital studies. Enter your Dorman track: ').strip().lower()
     elif scholar.lower() == "dean":
         is_scholar = True
 
     # eh it's restrictive rn but whatever
-    major = input("Enter your major (CS): ").upper()
+    import sys
+    major = input("This application is only for CS majors. Are you a CS major? Enter yes or no: ").lower()
+    while major!='yes':
+        reevaluate=input("Invalid major. This program is only for CS majors. Would you like to reconsider? Enter yes or no: ").strip().lower()
+        if reevaluate=='yes':
+            major=input("This program is only for CS majors. Are you a CS major? Enter yes or no: ").strip().lower()
+        else: 
+            print('Your major is not applicable for our program. Thank you.')
+            sys.exit()
+    major='CS'
 
+    '''
     while not is_valid(major, ["CS"]):
         major = input("Invalid major. Enter CS: ").upper()
+    '''
 
     # tuple with all this info
     return name, scholar, is_scholar, track, major
@@ -183,16 +199,26 @@ def get_user_info():
 def get_completed_courses(is_scholar, all_courses):
     completed_courses = []
 
-    num_completed = int(input("How many courses have you completed or have credit for? "))
+    num_completed = input("How many courses have you completed or have credit for? ").strip()
+    while not num_completed.isdigit():
+        num_completed=input('Invalid input. Enter an integer. How many courses have you completed or have credit for?').strip()
+    num_completed=int(num_completed)
 
     if is_scholar and num_completed > 0:
-        honors_taken = int(input("How many honors courses have you taken? "))
+        honors_taken = input("How many honors courses have you taken? ")
+        while not honors_taken.isdigit():
+            honors_taken=input('Invalid input. Enter an integer. How many honors courses have you taken?').strip()
+        honors_taken=int(honors_taken)
     else:
         honors_taken = 0
 
     # loop that adds them in
     for i in range(num_completed):
-        courseName = input("Enter completed course code (example: CS 100): ").upper()
+        courseName = input("Enter completed course code (example: CS 100) (physics example: PHYS 111 and 111A): ").strip().upper()
+        confirm=input(f'You entered course {courseName} please confirm if it is correct (yes/no): ').strip().lower()
+        while confirm!='yes':
+            courseName = input("Re-enter completed course code (example: CS 100) (physics example: PHYS 111 and 111A): ").strip().upper()
+            confirm=input(f'You entered course {courseName} please confirm if it is correct (yes/no): ').strip().lower()
         for course in all_courses:
             if courseName == course[0].upper():
                 completed_courses.append(course)
@@ -216,7 +242,7 @@ def get_max_credits(is_scholar):
                 keep_asking = False
         # overtimers
         elif max_credits > 19 or (max_credits > 17 and not is_scholar):
-            answer = input("You may have to pay extra overload tuition. Reconsider? (yes/no): ")
+            answer = input("You may have to pay extra overload tuition. Reconsider? (yes/no): ").strip().lower()
             if answer.lower() == "no":
                 keep_asking = False
         # normal student
